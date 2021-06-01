@@ -32,18 +32,17 @@ jobs:
         #uses: montudor/action-zip@v0.1.0
         #with:
           #args: 
-        # run: |  
-        #    zip -q ./bundle.zip ./index.js
-        run: | 
+        run: |  
+           zip -q ./bundle.zip ./index.js 
            zip -q ./python.zip ./prometheus.py
-      # - name: default deploy
-      #   uses: appleboy/lambda-action@master
-      #   with:
-      #     aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #     aws_region: us-west-1
-      #     function_name: github-cicd
-      #     zip_file: ./bundle.zip
+      - name: default deploy
+        uses: appleboy/lambda-action@master
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: us-west-1
+          function_name: github-cicd
+          zip_file: ./bundle.zip
       - name: new deploy
         uses: appleboy/lambda-action@master
         with:
