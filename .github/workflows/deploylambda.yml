@@ -34,7 +34,7 @@ jobs:
           #args: 
         run: |  
            zip -q ./bundle.zip ./index.js 
-           zip -q ./python.zip ./prometheus.py
+           zip -q ./python.zip ./prometheus.js
       - name: default deploy
         uses: appleboy/lambda-action@master
         with:
