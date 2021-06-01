@@ -29,9 +29,12 @@ jobs:
         #env:
         #  CI: true
       - name: zip
-        uses: montudor/action-zip@v0.1.0
-        with:
-          args: zip -qq ./bundle.zip ./index.js && zip -qq ./bundlepython.zip ./prometheus.py
+        #uses: montudor/action-zip@v0.1.0
+        #with:
+          #args: 
+        run: |  
+            zip -q ./bundle.zip ./index.js 
+            zip -q ./bundlepython.zip ./prometheus.py
       - name: default deploy
         uses: appleboy/lambda-action@master
         with:
