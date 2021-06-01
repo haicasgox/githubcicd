@@ -34,7 +34,7 @@ jobs:
           #args: 
         run: |  
            zip -q ./bundle.zip ./index.js 
-           zip -q ./python.zip ./prometheus.js
+           zip -q ./bundle2.zip ./index2.js
       - name: default deploy
         uses: appleboy/lambda-action@master
         with:
@@ -49,5 +49,5 @@ jobs:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: ap-southeast-1
-          function_name: khoi--Data
-          zip_file: ./python.zip
+          function_name: khoi-test
+          zip_file: ./bundle2.zip
