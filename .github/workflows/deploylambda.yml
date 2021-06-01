@@ -35,7 +35,7 @@ jobs:
         # run: |  
         #    zip -q ./bundle.zip ./index.js
         run: | 
-           zip -q ./bundlepython.zip ./prometheus.py
+           zip -q ./python.zip ./prometheus.py
       # - name: default deploy
       #   uses: appleboy/lambda-action@master
       #   with:
@@ -51,4 +51,4 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: ap-southeast-1
           function_name: khoi--Data
-          zip_file: ./bundlepython.zip
+          zip_file: ./python.zip
