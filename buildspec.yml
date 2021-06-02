@@ -7,12 +7,12 @@ phases:
   build:
     commands:
       - echo "creating zip files..."
-      - zip ./index.zip ./index.js && zip ./prometheus.zip ./prometheus.py
+      - zip ./index.zip ./index.js && zip ./lambda_function.zip ./lambda_function.py
   post_build:
     commands:
       - echo "Updating lambda function code..."
       - aws lambda update-function-code --function-name "github-cicd" --zip-file fileb://./index.zip
-      - aws lambda update-function-code --function-name "khoi--Data" --zip-file fileb://./prometheus.zip
+      - aws lambda update-function-code --function-name "khoi--Data" --zip-file fileb://./lambda_function.zip
       - aws lambda publish-version --function-name "github-cicd"
       - aws lambda publish-version --function-name "khoi--Data"
 artifacts:
