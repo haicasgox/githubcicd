@@ -1,0 +1,19 @@
+version: 0.0
+Resources:
+  - myLambdaFunction:
+      Type: AWS::Lambda::Function
+      Properties:
+        Name: "github-cicd"
+        #Alias: "myLambdaFunctionAlias"
+        CurrentVersion: "1"
+        TargetVersion: "2"
+  - myLambdaFunction:
+      Type: AWS::Lambda::Function
+      Properties:
+        Name: "khoidb"
+        #Alias: "myLambdaFunctionAlias"
+        CurrentVersion: "1"
+        TargetVersion: "2"
+Hooks:
+  - BeforeAllowTraffic: "LambdaFunctionToValidateBeforeTrafficShift"
+  - AfterAllowTraffic: "LambdaFunctionToValidateAfterTrafficShift"

@@ -1,0 +1,22 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      - echo "installing dependencies..."
+      - sudo npm install
+  build:
+    commands:
+      - echo "creating zip files..."
+      - zip ./index.zip ./index.js && zip ./prometheus.zip ./prometheus.py
+  post_build:
+    commands:
+      - echo "Updating lambda function code..."
+      - aws lambda update-function-code --function-name "github-cicd" --zip-file fileb://./index.zip
+      - aws lambda update-function-code --function-name "khoidb" --zip-file fileb://./prometheus.zip
+      - aws lambda publish-version --function-name "github-cicd"
+      - aws lambda publish-version --function-name "khoidb"
+artifacts:
+    files:
+     - './appspec.yml'
+    discard-paths: yes
+    
