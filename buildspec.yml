@@ -12,9 +12,9 @@ phases:
     commands:
       - echo "Updating lambda function code..."
       - aws lambda update-function-code --function-name "github-cicd" --zip-file fileb://./index.zip
-      - aws lambda update-function-code --function-name "khoidb" --zip-file fileb://./prometheus.zip
+      - aws lambda update-function-code --function-name "khoi--Data" --zip-file fileb://./prometheus.zip
       - aws lambda publish-version --function-name "github-cicd"
-      - aws lambda publish-version --function-name "khoidb"
+      - aws lambda publish-version --function-name "khoi--Data"
 artifacts:
     files:
      - './appspec.yml'

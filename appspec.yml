@@ -10,7 +10,7 @@ Resources:
   - myLambdaFunction:
       Type: AWS::Lambda::Function
       Properties:
-        Name: "khoidb"
+        Name: "khoi--Data"
         #Alias: "myLambdaFunctionAlias"
         CurrentVersion: "1"
         TargetVersion: "2"
