@@ -3,7 +3,7 @@ phases:
   install:
     commands:
       - echo "installing dependencies..."
-      - sudo npm install
+      - npm install
   build:
     commands:
       - echo "creating zip files..."
@@ -19,4 +19,3 @@ artifacts:
     files:
      - './appspec.yml'
     discard-paths: yes
-    
