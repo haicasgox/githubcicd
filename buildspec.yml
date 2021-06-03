@@ -7,14 +7,17 @@ phases:
   build:
     commands:
       - echo "creating zip files..."
+      # Create a new zip files for updated lambda function codes"
       - zip ./index.zip ./index.js && zip ./lambda_function.zip ./lambda_function.py
   post_build:
     commands:
       - echo "Updating lambda function code..."
       - aws lambda update-function-code --function-name "github-cicd" --zip-file fileb://./index.zip
       - aws lambda update-function-code --function-name "khoi--Data" --zip-file fileb://./lambda_function.zip
+      - echo "Publishing new lambda version..."
       - aws lambda publish-version --function-name "github-cicd"
       - aws lambda publish-version --function-name "khoi--Data"
+      - echo "Invoking lambda function..."
       - aws lambda invoke --function-name github-cicd --invocation-type Event --region us-west-1 response.json 
       - aws lambda invoke --function-name khoi--Data --invocation-type Event --region us-west-1 response_khoidata.json 
 artifacts:
