@@ -15,8 +15,8 @@ phases:
       - aws lambda update-function-code --function-name "khoi--Data" --zip-file fileb://./lambda_function.zip
       - aws lambda publish-version --function-name "github-cicd"
       - aws lambda publish-version --function-name "khoi--Data"
-      - aws lambda invoke --function-name github-cicd --invocation-type event --log-type tail
-      - aws lambda invoke --function-name khoi--Data --invocation-type event --log-type tail
+      - aws lambda invoke --function-name github-cicd --invocation-type Event --region us-west-1 response.json 
+      - aws lambda invoke --function-name khoi--Data --invocation-type Event --region us-west-1 response_khoidata.json 
 artifacts:
     files:
      - './appspec.json'
